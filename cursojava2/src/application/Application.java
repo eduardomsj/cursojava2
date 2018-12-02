@@ -3,7 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Employee;
+import entities.Student;
 
 public class Application {
 
@@ -11,25 +11,26 @@ public class Application {
 
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		
-		Employee employee = new Employee();
-		
-		System.out.print("Name: ");
-		employee.name = sc.nextLine();
-		System.out.print("Gross salary: ");
-		employee.salary = sc.nextDouble();
-		System.out.print("Tax: ");
-		employee.tax = sc.nextDouble();
-				
-		System.out.println("Employee: " + employee);
-		System.out.println();
-		
-		System.out.print("Which percentage to increase salary? ");
-		double perc = sc.nextDouble();
-		employee.increaseSalary(perc);
-		
-		System.out.println();
-		System.out.println("Updated data: " + employee);
+
+		Student student = new Student();
+
+		student.name = sc.nextLine();
+		double nota1 = sc.nextDouble();
+		double nota2 = sc.nextDouble();
+		double nota3 = sc.nextDouble();
+
+		double result = student.result(nota1, nota2, nota3);
+
+		System.out.println("FINAL GRADE = " + result);
+
+		if (result >= 60) {
+			System.out.println("PASS");
+		} else {
+			System.out.println("FAILED");
+			result = 60 - result;
+			System.out.println("MISSING " + result + " POINTS");
+		}
+
 		sc.close();
 	}
 
