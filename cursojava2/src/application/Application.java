@@ -3,7 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Student;
+import utils.CurrencyConverter;
 
 public class Application {
 
@@ -12,25 +12,12 @@ public class Application {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		Student student = new Student();
-
-		student.name = sc.nextLine();
-		double nota1 = sc.nextDouble();
-		double nota2 = sc.nextDouble();
-		double nota3 = sc.nextDouble();
-
-		double result = student.result(nota1, nota2, nota3);
-
-		System.out.println("FINAL GRADE = " + result);
-
-		if (result >= 60) {
-			System.out.println("PASS");
-		} else {
-			System.out.println("FAILED");
-			result = 60 - result;
-			System.out.println("MISSING " + result + " POINTS");
-		}
-
+		System.out.print("What is the dollar price? ");
+		double price = sc.nextDouble();
+		System.out.print("How many dollar will be bought? ");
+		double quantity = sc.nextDouble();
+		System.out.println("Amount to be paid in reais = " + CurrencyConverter.converter(price, quantity));
+		
 		sc.close();
 	}
 
